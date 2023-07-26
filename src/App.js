@@ -1,6 +1,10 @@
+// Import de bibliotecas
 import './App.css';
 import {BrowserRouter, Routes, Route, Outlet, Link, useNavigate, useParams} from "react-router-dom";
 import { useState , useEffect } from 'react';
+
+// Define o endereço do servidor
+const endereco_servidor = 'http://localhost:8000';
 
 /**
  * Layout do menu.
@@ -71,7 +75,7 @@ function FrmCadastroCliente(){
       //Se foi passado um parametro
       if (alterarId > 0) {      
         //Consulta o cliente
-        const response = await fetch(`http://localhost:8000/cliente/${alterarId}`);
+        const response = await fetch(`${endereco_servidor}/cliente/${alterarId}`);
         const data = await response.json();
         //Atualiza os dados
         setClienteId(data.clienteId);
@@ -98,7 +102,7 @@ function FrmCadastroCliente(){
     }
 
     //Endereço da API + campos em JSON
-    fetch('http://localhost:8000/cliente', {
+    fetch(`${endereco_servidor}/cliente`, {
         method : 'post',
         headers : {'Content-Type': 'application/json'},
         body: JSON.stringify(dados)}) //Converte os dados para JSON
@@ -122,7 +126,7 @@ function FrmCadastroCliente(){
     };
 
     //Endereço da API + campos em JSON
-    fetch(`http://localhost:8000/cliente/${clienteId}`, {
+    fetch(`${endereco_servidor}/cliente/${clienteId}`, {
         method : 'put',
         headers : {'Content-Type': 'application/json'},
         body: JSON.stringify(dados)}) //Converte os dados para JSON
@@ -178,7 +182,7 @@ function FrmExcluirCliente() {
     // Exclui um cliente
     const excluirCliente = async () => {
       //Endereço da API + campos em JSON
-      fetch(`http://localhost:8000/cliente/${clienteId}`, {method : 'delete'}) 
+      fetch(`${endereco_servidor}/cliente/${clienteId}`, {method : 'delete'}) 
       .then((response) => response.json()) //Converte a resposta para JSON
       .then((data) => setResultado(data.message)); // Atribui a resposta ao resultado
     };
@@ -210,7 +214,7 @@ function ListarCliente(){
 
     // Busca os clientes cadastrados no servidor.
     const getClientes = () => {
-      fetch("http://localhost:8000/cliente")
+      fetch(`${endereco_servidor}/cliente`)
         .then(response => {return response.json()}) //Converte a resposta para JSON
         .then(data => {setClientes(data)}) // Atribui a resposta ao cliente
     };

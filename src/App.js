@@ -120,13 +120,13 @@ function FrmCadastroCliente(){
     event.preventDefault();   
     
     const dados =  { 
-          'clienteId': clienteId,
+          'clienteId': alterarId,
           'nome': nome,
           'cpf': cpf
     };
 
     //Endereço da API + campos em JSON
-    fetch(`${endereco_servidor}/cliente/${clienteId}`, {
+    fetch(`${endereco_servidor}/cliente/${alterarId}`, {
         method : 'put',
         headers : {'Content-Type': 'application/json'},
         body: JSON.stringify(dados)}) //Converte os dados para JSON

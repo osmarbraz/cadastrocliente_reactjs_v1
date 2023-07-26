@@ -71,6 +71,7 @@ function FrmCadastroCliente(){
   // Renderiza a lista de clientes.
   useEffect(() => {
     
+    // Recupera um cliente para alteração
     const getCliente = async () => {
       //Se foi passado um parametro
       if (alterarId > 0) {      
@@ -199,11 +200,11 @@ function FrmExcluirCliente() {
 }
 
 /**
- * Opção 1 do menu.
+ * Componente de listagem de clientes.
  * 
  * @returns 
  */
-function ListarCliente(){
+function FrmListarCliente(){
   
   // Estados inciais das variáveis do componente
   const navigate = useNavigate();
@@ -225,27 +226,27 @@ function ListarCliente(){
   // Renderiza o componente
   return (
     <div>
-        <h2>2 - Listar(Editar, Excluir)</h2>        
-        <div>
-          <table border='1'> 
-            <td>Id</td> <td>Nome</td> <td>CPF</td> <td>Editar</td> <td>Excluir</td>          
-            {clientes.map(cliente => (
-              <tr>
-                <td> {cliente.clienteId} </td>
-                <td> {cliente.nome}</td>
-                <td> {cliente.cpf}</td>
-                <td> 
-                  <button onClick={() => {navigate(`/frmcadastrocliente/${cliente.clienteId}`)}}>Editar</button>
-                </td>                
-                <td>                  
-                  <button onClick={() => {navigate(`/frmexcluircliente/${cliente.clienteId}`)}}>Excluir</button>
-                </td>
-              </tr>
-            ))}
-          </table>
-          <br/>          
-        </div>
-     </div>
+      <h2>2 - Listar(Editar, Excluir)</h2>        
+      <div>
+        <table border='1'> 
+          <td>Id</td> <td>Nome</td> <td>CPF</td> <td>Editar</td> <td>Excluir</td>          
+          {clientes.map(cliente => (
+            <tr>
+              <td> {cliente.clienteId} </td>
+              <td> {cliente.nome}</td>
+              <td> {cliente.cpf}</td>
+              <td> 
+                <button onClick={() => {navigate(`/frmcadastrocliente/${cliente.clienteId}`)}}>Editar</button>
+              </td>                
+              <td>                  
+                <button onClick={() => {navigate(`/frmexcluircliente/${cliente.clienteId}`)}}>Excluir</button>
+              </td>
+            </tr>
+          ))}
+        </table>
+        <br/>          
+      </div>
+    </div>
   );
 }
 
@@ -261,7 +262,7 @@ function MenuPrincipal() {
           <Route path='/' element={<Layout />}>
             <Route path='frmcadastroCliente/:alterarId' element={<FrmCadastroCliente />} />
             <Route path='frmexcluircliente/:clienteId' element={<FrmExcluirCliente />} />
-            <Route path='listarcliente' element={<ListarCliente />} />                
+            <Route path='listarcliente' element={<FrmListarCliente />} />
             <Route path='*' element={<NoPage />} />
           </Route>
         </Routes>        

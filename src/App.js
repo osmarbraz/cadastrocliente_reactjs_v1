@@ -156,7 +156,7 @@ function FrmCadastroCliente(){
           <input type="text" size="60" id="nome" name="nome" value={nome} onChange={(event) => setNome(event.target.value)} /></label><br/>
           <label>CPF: 
           <input type="text" size="15" id="cpf" name="cpf" value={cpf} onChange={(event) => setCpf(event.target.value)} /></label><br/><br/>
-          <input type="button" value="Limpar"  onClick={limpar} />
+          <input type="button" name="Limpar" value="Limpar" onClick={limpar} />
           <input type="submit" name="Cadastrar" value="Cadastrar"/><br/><br/>
           <label>Resultado: {resultado} </label>
       </form>
@@ -229,7 +229,10 @@ function FrmListarCliente(){
       <h2>2 - Listar(Editar, Excluir)</h2>        
       <div>
         <table border='1'> 
-          <td>Id</td> <td>Nome</td> <td>CPF</td> <td>Editar</td> <td>Excluir</td>          
+          <thead>
+            <th>Id</th> <th>Nome</th> <th>CPF</th> <th>Editar</th> <th>Excluir</th>          
+          </thead>  
+          <tbody>
           {clientes.map(cliente => (
             <tr>
               <td> {cliente.clienteId} </td>
@@ -243,6 +246,7 @@ function FrmListarCliente(){
               </td>
             </tr>
           ))}
+          </tbody>
         </table>
         <br/>          
       </div>

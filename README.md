@@ -4,7 +4,7 @@
 
 - O projeto foi desenvolvido no VSCode deve ser chamado "cadastrocliente_reactjs_v1".
 - Programa servidor está no projeto "cadastrocliente_nodejs_v1".
-- Programa cliente web utiliza a porta 3000.
+- Programa cliente web utiliza a porta 5173.
 - A pasta src contêm os fontes do projeto.
 
 ## Dependências
@@ -13,7 +13,7 @@
 
 ## Execução
 
-   <pre><code>npm start</code></pre>
+   <pre><code>npm run dev</code></pre>
 
 ## Atualização
 
@@ -23,4 +23,4 @@
 
 ## Arquivos do projeto em src
 
-- App.js - Interface do programa.
+- App.jsx - Interface do programa.
